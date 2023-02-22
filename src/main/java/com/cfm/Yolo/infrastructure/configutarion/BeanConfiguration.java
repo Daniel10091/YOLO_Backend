@@ -13,5 +13,5 @@ public class BeanConfiguration {
   PersonServicePort personService(PersonRepositoryPort personRepositoryPort) {
     return new PersonServiceImp(personRepositoryPort);
   }
-
+  
 }
