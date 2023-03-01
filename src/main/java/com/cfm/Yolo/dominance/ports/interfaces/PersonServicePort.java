@@ -8,10 +8,14 @@ import javassist.NotFoundException; // TODO: Required dependency injection
 
 // TODO: Service class interface
 public interface PersonServicePort {
-  
+
   List<PersonDto> findAllPerson();
 
-  void savePerson(PersonDto personDto);
+  PersonDto findPersonById(Integer id);
+
+  Boolean existsByUsername(String username);
+
+  void savePerson(PersonDto personDto) throws Exception;
 
   void updatePerson(PersonDto personDto) throws NotFoundException;
 

@@ -11,14 +11,15 @@ import com.cfm.Yolo.dominance.models.Person;
 import com.cfm.Yolo.dominance.ports.repositories.PersonRepositoryPort;
 import com.cfm.Yolo.infrastructure.adapters.entity.PersonEntity;
 
-
 @Component
 public class PersonRepository implements PersonRepositoryPort {
-  
-  private final SpringPersonRepository springPersonRepository;
 
-  public PersonRepository(SpringPersonRepository springPersonRepository) {
+  private final SpringPersonRepository springPersonRepository;
+  private final SpringUserRepository springUserRepository;
+
+  public PersonRepository(SpringPersonRepository springPersonRepository, SpringUserRepository springUserRepository) {
     this.springPersonRepository = springPersonRepository;
+    this.springUserRepository = springUserRepository;
   }
 
   @Override
@@ -35,6 +36,11 @@ public class PersonRepository implements PersonRepositoryPort {
       return personEntity.get().toPerson();
 
     throw new RuntimeException("Person does not exist");
+  }
+
+  @Override
+  public Boolean existsByUsername(String username) {
+    return this.springUserRepository.existsByUsername(username);
   }
 
   @Override

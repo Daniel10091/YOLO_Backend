@@ -2,6 +2,8 @@ package com.cfm.Yolo.dominance.dtos;
 
 import java.time.Instant;
 
+import com.cfm.Yolo.dominance.models.Person;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PersonDto {
-  
+
   private Integer code;
   private String name;
   private String gender;
@@ -24,5 +26,9 @@ public class PersonDto {
   private String password;
   private Boolean isActive;
   private Instant userCreatedDate;
+
+  public Person toModel() {
+    return null;
+  }
 
 }

@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User {
-  
+
   private Integer id;
   private Person person;
   private byte[] avatar;

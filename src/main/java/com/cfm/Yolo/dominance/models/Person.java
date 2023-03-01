@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Person {
-  
+
   private Integer id;
   private String name;
   private String gender;
@@ -32,44 +32,46 @@ public class Person {
     this.name = personDto.getName();
     this.gender = personDto.getGender();
     this.createdDate = personDto.getCreatedDate();
-    this.user.setId(personDto.getCode());
-    this.user.setAvatar(personDto.getAvatar());
-    this.user.setBackground(personDto.getBackground());
+    if (personDto.getCode() != null)
+      this.user.setId(personDto.getCode());
+    if (personDto.getAvatar() != null)
+      this.user.setAvatar(personDto.getAvatar());
+    if (personDto.getBackground() != null)
+      this.user.setBackground(personDto.getBackground());
     this.user.setUsername(personDto.getUsername());
     this.user.setSalt(personDto.getSalt());
     this.user.setPassword(personDto.getPassword());
-    this.user.setCreatedDate(personDto.getUserCreatedDate());
+    if (personDto.getCreatedDate() != null)
+      this.user.setCreatedDate(personDto.getUserCreatedDate());
   }
 
   public PersonDto toPersonDto() {
     return new PersonDto(
-      this.id,
-      this.name,
-      this.gender,
-      this.createdDate,
-      this.user.getAvatar(),
-      this.user.getBackground(),
-      this.user.getUsername(),
-      this.user.getSalt(),
-      this.user.getPassword(),
-      this.user.getIsActive(),
-      this.user.getCreatedDate()
-    );
+        this.id,
+        this.name,
+        this.gender,
+        this.createdDate,
+        this.user.getAvatar(),
+        this.user.getBackground(),
+        this.user.getUsername(),
+        this.user.getSalt(),
+        this.user.getPassword(),
+        this.user.getIsActive(),
+        this.user.getCreatedDate());
   }
 
   public Person(
-          Integer id,
-          String name,
-          String gender,
-          Instant createdDate,
-          byte[] avatar,
-          byte[] background,
-          String username,
-          String salt,
-          String Password,
-          Boolean isActive,
-          Instant userCreatedDate
-  ) {
+      Integer id,
+      String name,
+      String gender,
+      Instant createdDate,
+      byte[] avatar,
+      byte[] background,
+      String username,
+      String salt,
+      String Password,
+      Boolean isActive,
+      Instant userCreatedDate) {
     this.id = id;
     this.name = name;
     this.gender = gender;
@@ -82,4 +84,5 @@ public class Person {
     this.user.setIsActive(isActive);
     this.user.setCreatedDate(userCreatedDate);
   }
+
 }

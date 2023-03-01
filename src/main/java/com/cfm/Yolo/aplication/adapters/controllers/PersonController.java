@@ -17,15 +17,15 @@ import javassist.NotFoundException;
 @RestController
 @RequestMapping("yolo/api/person")
 public class PersonController {
-  
+
   private final PersonServicePort personServicePort;
-  
+
   public PersonController(PersonServicePort personServicePort) {
     this.personServicePort = personServicePort;
   }
 
   @PostMapping("/save")
-  void createPerson(@RequestBody PersonDto personDto) {
+  void createPerson(@RequestBody PersonDto personDto) throws Exception {
     personServicePort.savePerson(personDto);
   }
 
